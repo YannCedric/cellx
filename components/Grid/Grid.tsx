@@ -7,8 +7,8 @@ export function Grid() {
 
   return (
     <div className={styles.grid}>
-      {Object.values(cells).map((cell) => (
-        <Cell key={cell.id} {...cell.coordinates} />
+      {Object.keys(cells).map((id) => (
+        <Cell key={id} id={id} />
       ))}
     </div>
   );

@@ -1,8 +1,16 @@
 $cell-padding: 5px;
 
 .input {
+    font-family: inherit;
     border: none;
     padding: $cell-padding $cell-padding;
     resize: none;
     outline: none;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 }
+
+.input::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}   

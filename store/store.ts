@@ -43,6 +43,19 @@ function toCellKey(col: Col, row: Row) {
   return `${col}${row}` as CellKey;
 }
 
+export function toId(id: string) {
+  const col = id[0];
+  const row = id.substring(1);
+
+  if (!/^[A-Z]$/.test(col)) {
+    throw new Error("Invalid id col: " + id);
+  } else if (!/^\d+$/.test(row)) {
+    throw new Error("Invalid id row: " + id);
+  }
+
+  return `${col}${row}` as CellKey;
+}
+
 interface Cell {
   id: CellKey;
   coordinates: Coordinate;
@@ -57,8 +70,8 @@ interface Store {
   cols: number;
   rows: number;
   cells: Cells;
-  getCell(coord: Coordinate): Cell;
-  setCellValue(coordinates: Coordinate, val: string): void;
+  getCell(id: string): Cell;
+  setCellValue(id: string, val: string): void;
 }
 
 function generateDefaultCells() {
@@ -81,13 +94,12 @@ export const useStore = create<Store>((set, get) => ({
   rows: LETTERS.length,
   cols: DEFAULT_ROWS_COUNT,
   cells: DEFAULT_CELLS,
-  getCell({ col, row }: Coordinate) {
-    const id = toCellKey(col, row);
-    return get().cells[id];
+  getCell(id: string) {
+    return get().cells[toId(id)];
   },
-  setCellValue(coordinates: Coordinate, val: string) {
+  setCellValue(id: string, val: string) {
     const { cells } = get();
-    cells[toCellKey(coordinates.col, coordinates.row)].value = val;
+    cells[toId(id)].value = val;
 
     set({ cells: cells });
   },
