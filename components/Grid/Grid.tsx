@@ -3,11 +3,11 @@ import { Cell } from "../Cell";
 import styles from "./Grid.module.scss";
 
 export function Grid() {
-  const { getCells } = useStore(({ getCells }) => ({ getCells }));
+  const cells = useStore(({ cells }) => cells);
 
   return (
     <div className={styles.grid}>
-      {getCells().map((cell) => (
+      {Object.values(cells).map((cell) => (
         <Cell key={cell.id} {...cell.coordinates} />
       ))}
     </div>

@@ -58,7 +58,6 @@ interface Store {
   rows: number;
   cells: Cells;
   getCell(coord: Coordinate): Cell;
-  getCells(): Cell[];
   setCellValue(coordinates: Coordinate, val: string): void;
 }
 
@@ -85,9 +84,6 @@ export const useStore = create<Store>((set, get) => ({
   getCell({ col, row }: Coordinate) {
     const id = toCellKey(col, row);
     return get().cells[id];
-  },
-  getCells() {
-    return Object.values(get().cells);
   },
   setCellValue(coordinates: Coordinate, val: string) {
     const { cells } = get();
