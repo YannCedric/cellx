@@ -1,2 +1,2 @@
 export { useStore } from "./store";
-export type { Coordinate } from "./store";
+export type { Coordinate, Direction } from "./store";

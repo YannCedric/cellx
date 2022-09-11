@@ -1,0 +1,26 @@
+.position {
+    position: absolute;
+    transition: all;
+    transition-duration: .2s;
+
+    top: var(--x);
+    left: var(--y);
+    width: var(--width);
+    height: var(--height);
+}
+
+.outline {
+    pointer-events: none;
+
+    border-style: solid;
+    border-width: var(--size-thin);
+    border-color: var(--color-accent-1);
+    border-radius: var(--border-radius-1);
+}
+
+.button {
+    cursor: crosshair;
+    border-radius: 4px;
+    background-color: var(--color-accent-1);
+    border: .5px solid white;
+}

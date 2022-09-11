@@ -1,7 +1,9 @@
 .grid {
+    position: relative;
     display: grid;
     gap: 1px;
     width: fit-content;
     background-color: rgba(12, 12, 12, 0.262);
-    grid-template-columns: repeat(10, 100px);
+    grid-template-columns: repeat(var(--cols), 100px);
+    grid-template-rows: repeat(var(--rows), 25px);
 }

@@ -7,6 +7,20 @@ body {
   font-family: 'Fira Sans', sans-serif;
 }
 
+:root {
+  --color-primary: black; 
+  --color-secondary: white; 
+
+  --color-background: white; 
+  --color-surface: white;
+
+  --color-accent-1: #0039a9;
+  --color-error: 	#a92022;
+
+  --size-thin: 1.5px;
+  --border-radius-1: 2px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
