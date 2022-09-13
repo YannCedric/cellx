@@ -130,9 +130,9 @@ export const useStore = create<Store>((set, get) => ({
   cells: DEFAULT_CELLS,
   selectedCell: null,
   moveToNextCell(direction: Direction) {
-    const { selectedCell } = get();
+    const { selectedCell, setSelectedCell } = get();
     if (selectedCell == null) {
-      set({ selectedCell: get().getCell("A1") });
+      setSelectedCell("A1");
     } else {
       const { col, row } = toCoordinates(selectedCell.id);
       let nextRow = row;
@@ -144,8 +144,8 @@ export const useStore = create<Store>((set, get) => ({
       else if (direction == "d") nextRow = getSiblingRow(row, +1);
 
       const nextId = `${nextCol}${nextRow}`;
-      const nextSelectedCell = get().getCell(nextId);
-      set({ selectedCell: nextSelectedCell });
+      setSelectedCell(nextId);
+      document.getElementById(nextId)?.focus();
     }
   },
   setSelectedCell(id: string | null) {
